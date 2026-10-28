@@ -1,0 +1,16 @@
+version: "3"
+
+vars:
+  GHOSTTY_APP: $HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty
+  GHOSTTY_REPO: configs/ghostty/config.ghostty
+
+tasks:
+  ghostty:pull:
+    desc: Copy ghostty config from the app into the repo
+    cmds:
+      - cp "{{.GHOSTTY_APP}}" "{{.GHOSTTY_REPO}}"
+
+  ghostty:push:
+    desc: Copy ghostty config from the repo into the app
+    cmds:
+      - cp "{{.GHOSTTY_REPO}}" "{{.GHOSTTY_APP}}"
