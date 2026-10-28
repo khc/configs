@@ -3,6 +3,8 @@ version: "3"
 vars:
   GHOSTTY_APP: $HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty
   GHOSTTY_REPO: configs/ghostty/config.ghostty
+  ZED_APP: $HOME/.config/zed/settings.json
+  ZED_REPO: configs/zed/settings.json
 
 tasks:
   ghostty:pull:
@@ -14,3 +16,13 @@ tasks:
     desc: Copy ghostty config from the repo into the app
     cmds:
       - cp "{{.GHOSTTY_REPO}}" "{{.GHOSTTY_APP}}"
+
+  zed:pull:
+    desc: Copy zed settings from the app into the repo
+    cmds:
+      - cp "{{.ZED_APP}}" "{{.ZED_REPO}}"
+
+  zed:push:
+    desc: Copy zed settings from the repo into the app
+    cmds:
+      - cp "{{.ZED_REPO}}" "{{.ZED_APP}}"
